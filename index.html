@@ -112,9 +112,9 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbydwUwPCYNLk7Cj6UQeUnX8
 
 const tg = window.Telegram && Telegram.WebApp;
 const inTg = !!(tg && tg.initData);
-const ICONS = { 'Продукты':'🛒','Сад':'🧸','Кредит':'🏦','Топливо':'⛽','Коммуналка':'💡','Жене':'💐','Ребёнок':'🍼',
-  'Ужин/кафе':'🍽','Сигареты':'🚬','Подписки':'📺','Транспорт':'🚕','Связь':'📱','Питьевая вода':'💧','Копилка':'🐷',
-  'Доход':'💰','Другое':'📦' };
+const ICONS = { 'Продукты':'🛒','Сад':'🧸','Кредит':'🏦','Топливо':'🔌','Коммуналка':'💡','Жене':'💐','Ребёнок':'🍼',
+  'Ужин/кафе':'🍽','Сигареты':'🚬','Подписки':'📺','Транспорт':'🚗','Связь':'📱','Питьевая вода':'💧','Копилка':'🎯',
+  'Доход':'💰','Долги':'💳','Подарки':'🎁','Барбершоп':'💈','Другое':'📦' };
 const app = document.getElementById('app');
 let data = null, busy = false;
 const form = { type: 'Расход', category: null };
@@ -150,7 +150,7 @@ function render() {
     const p = l.limit ? l.spent / l.limit * 100 : 100;
     if (l.cat === 'Копилка') {  // для копилки превышение — это хорошо
       return `<div class="lim">
-        <div class="row"><span class="name">🐷 Копилка — цель</span>
+        <div class="row"><span class="name">🎯 Копилка — цель</span>
         <span class="val">${short(l.spent)}${l.limit ? ' / ' + short(l.limit) : ''}${p >= 100 ? ' ✅' : ''}</span></div>
         <div class="bar"><i style="width:${Math.min(100, p)}%"></i></div></div>`;
     }
@@ -183,7 +183,7 @@ function render() {
       <div class="stats">
         <div class="stat"><span>Доход</span><b>${short(d.income)}</b></div>
         <div class="stat"><span>Расходы</span><b>${short(d.spent)}</b></div>
-        <div class="stat"><span>🐷 Копилка</span><b>${short(d.saved)}</b></div>
+        <div class="stat"><span>🎯 Копилка</span><b>${short(d.saved)}</b></div>
       </div>
     </div>
     <h2>Лимиты</h2><div class="card">${limits || '<div class="empty">Нет данных</div>'}</div>
