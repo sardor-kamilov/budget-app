@@ -193,7 +193,7 @@ function render() {
 function renderChips() {
   const chips = document.getElementById('chips');
   if (form.type !== 'Расход') { chips.innerHTML = ''; return; }
-  const first = ['Продукты', 'Ужин/кафе', 'Топливо', 'Ребёнок', 'Сигареты', 'Транспорт'];
+  const first = ['Продукты', 'Ужин/кафе', 'Транспорт', 'Ребёнок', 'Сигареты', 'Лекарства'];
   const all = (data ? data.categories : []).filter(c => c !== 'Копилка');
   const cats = first.filter(c => all.includes(c)).concat(all.filter(c => !first.includes(c)));
   chips.innerHTML = cats.map(c =>
